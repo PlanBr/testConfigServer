@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'java-library'
+    id 'org.springframework.boot' version '2.6.6' apply false
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+group 'org.test-conf-server'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+//    implementation 'org.springframework.boot:org.springframework.boot.gradle.plugin:3.0.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    api 'org.springframework.boot:spring-boot-starter-web'
+    api 'org.springframework.boot:spring-boot-starter-test'
+
+    api 'com.solace.spring.boot:solace-jms-spring-boot-starter:4.+'
+
+    // enable Spring cloud config as config source
+    api 'org.springframework.cloud:spring-cloud-config-client:3.+'
+
+    api 'org.testcontainers:testcontainers:1.17.1'
+    api 'org.testcontainers:junit-jupiter:1.17.1'
+}
+
+test {
+    useJUnitPlatform()
+}
